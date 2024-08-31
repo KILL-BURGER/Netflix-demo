@@ -7,7 +7,9 @@ const NotFoundPage = () => {
             <h1>😩</h1>
             <h1>404</h1>
             <h3>NOT FOUND</h3>
-            <button className={'not-found-page-btn'}>Netflix Home</button>
+            <a href={'/'}>
+                <button className={'not-found-page-btn'}>Netflix Home</button>
+            </a>
         </div>
     </div>;
 };
