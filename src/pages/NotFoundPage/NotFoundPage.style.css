@@ -1,0 +1,16 @@
+.not-found-page-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.not-found-page-btn {
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
+    padding: .8rem 2.4rem;
+    font-weight: bold;
+}
