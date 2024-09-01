@@ -26,7 +26,7 @@ const AppLayout = () => {
                         navbarScroll
                     >
                         <Nav.Link className={'text-white me-4 link-offset-2 link-underline link-underline-opacity-0'} href="/">Home</Nav.Link>
-                        <Nav.Link className={'text-white link-offset-2 link-underline link-underline-opacity-0'} href="/Movies">Movies</Nav.Link>
+                        <Nav.Link className={'text-white link-offset-2 link-underline link-underline-opacity-0'} href="/movies">Movies</Nav.Link>
                     </Nav>
                     <Form className="d-flex">
                         <Form.Control
