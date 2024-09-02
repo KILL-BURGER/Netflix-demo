@@ -26,3 +26,12 @@
 .banner-text-area > * {
     z-index: 2;
 }
+
+@media (max-width: 768px) {
+    .banner-text-title {
+        width: 200px;
+    }
+    .banner-text-overview {
+        display: none;
+    }
+}
