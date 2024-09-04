@@ -6,7 +6,7 @@ import {useTopRatedMoviesQuery} from "../../../../hooks/useTopRatedMovies";
 
 const TopRatedMovieSlide = () => {
     const {data, isLoading, isError, error} = useTopRatedMoviesQuery()
-    console.log('topRatedMovies', data);
+    // console.log('topRatedMovies', data);
     if (isLoading) {
         return <h1>Loading...</h1>;
     }
