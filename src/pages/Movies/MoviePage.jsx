@@ -72,7 +72,7 @@ const MoviePage = () => {
 
         <Row>
             {data?.results.length > 0 ? data?.results.map((movie, index) => (
-                <Col key={index} lg={2} xs={12}>
+                <Col key={index} lg={3} xs={2}>
                     <MovieCard movie={movie}/>
                 </Col>
             )) : <h1 style={{textAlign: "center"}}>😭 검색한 결과가 없습니다..!</h1>}
