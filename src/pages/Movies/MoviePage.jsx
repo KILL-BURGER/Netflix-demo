@@ -18,23 +18,22 @@ import {useMovieGenreQuery} from "../../hooks/useMovieGenre";
 const MoviePage = () => {
     const [query, setQuery] = useSearchParams();
     const [page, setPage] = useState(1);
-    const handlePageClick = ({selected}) => {
-        setPage(selected + 1);
-    }
+
     const keyword = query.get('q');
     const {data, isLoading, isError, error}
         = useSearchMovieQuery({keyword, page});
     const {data: genreData} = useMovieGenreQuery();
-
     const [selectedSort, setSelectedSort] = useState('정렬기준');
     const [selectedGenre, setSelectedGenre] = useState('장르별 검색');
 
     let movieList = data?.results;
-
     const [filterList, setFilterList] = useState([]);
-
     if (filterList.length !== 0) {
         movieList = filterList;
+    }
+
+    const handlePageClick = ({selected}) => {
+        setPage(selected + 1);
     }
 
     // 인기 많은순
@@ -43,7 +42,6 @@ const MoviePage = () => {
             console.log(movieList.sort((a, b) => b.popularity - a.popularity));
         }
     }
-
     // 인기 적은순
     const popularListAsc = () => {
         if (movieList.length > 0 && movieList[0] !== '😭 검색한 결과가 없습니다..!') {
@@ -51,10 +49,9 @@ const MoviePage = () => {
         }
     }
 
-    console.log('data', data);
-    console.log('genre', genreData);
-    console.log('movieList', movieList);
-
+    // console.log('data', data);
+    // console.log('genre', genreData);
+    // console.log('movieList', movieList);
 
     if (isLoading) {
         return (
@@ -127,7 +124,7 @@ const MoviePage = () => {
             <ReactPaginate
                 nextLabel=">"
                 onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
+                pageRangeDisplayed={movieList[0] === '😭 검색한 결과가 없습니다..!' ? 0 : 2}
                 marginPagesDisplayed={0}
                 pageCount={data.total_pages} // 전체페이지
                 previousLabel="<"
