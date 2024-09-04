@@ -1,0 +1,25 @@
+.spinner-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.r-page-link {
+    background-color: #000;
+    border: none;
+    color: red;
+    padding: 15px;
+    text-decoration: none;
+}
+
+.drop-area {
+    display: flex;
+    padding: 5px;
+}
+
+.pagination .active .r-page-link {
+    color: white;
+    background-color: red;
+    border-color: red;
+}
