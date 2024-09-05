@@ -1,5 +1,4 @@
 import React from "react";
-import './MovieDetailPage.style.css';
 import {useMovieDetailQuery} from "../../hooks/useMovieDetail";
 import {useParams} from "react-router-dom";
 import {Alert, Col, Row, Spinner} from "react-bootstrap";
@@ -8,6 +7,7 @@ import {useMovieReviewsQuery} from "../../hooks/useMovieReview";
 import YouTubeModal from "../Homepage/component/Modal/YouTubeModal";
 import {useMovieVideosQuery} from "../../hooks/useMovieVideos";
 import ContentBox from "../../common/ContentBox/ContentBox";
+import './MovieDetailPage.style.css';
 
 const MovieDetailPage = () => {
     const {id} = useParams();
