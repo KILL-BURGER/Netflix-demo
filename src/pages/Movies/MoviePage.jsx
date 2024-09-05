@@ -18,7 +18,6 @@ import {useMovieGenreQuery} from "../../hooks/useMovieGenre";
 const MoviePage = () => {
     const [query, setQuery] = useSearchParams();
     const [page, setPage] = useState(1);
-
     const keyword = query.get('q');
     const {data, isLoading, isError, error}
         = useSearchMovieQuery({keyword, page});
@@ -26,14 +25,18 @@ const MoviePage = () => {
     const [selectedSort, setSelectedSort] = useState('정렬기준');
     const [selectedGenre, setSelectedGenre] = useState('장르별 검색');
 
+    let currentPage = data?.page;
+    console.log('currentPage', currentPage);
+
     let movieList = data?.results;
     const [filterList, setFilterList] = useState([]);
     if (filterList.length !== 0) {
         movieList = filterList;
     }
 
-    const handlePageClick = ({selected}) => {
-        setPage(selected + 1);
+    const handlePageClick = (event) => {
+        console.log('event', event);
+        setPage(event.selected + 1);
     }
 
     // 인기 많은순
@@ -49,7 +52,7 @@ const MoviePage = () => {
         }
     }
 
-    // console.log('data', data);
+    console.log('data', data);
     // console.log('genre', genreData);
     // console.log('movieList', movieList);
 
@@ -140,7 +143,7 @@ const MoviePage = () => {
                 containerClassName="pagination"
                 activeClassName="active"
                 renderOnZeroPageCount={null}
-                forcePage={page - 1}
+                forcePage={currentPage - 1}
             />
         </div>
 
