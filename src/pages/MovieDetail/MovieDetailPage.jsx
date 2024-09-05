@@ -1,11 +1,13 @@
 import React from "react";
+import './MovieDetailPage.style.css';
 import {useMovieDetailQuery} from "../../hooks/useMovieDetail";
 import {useParams} from "react-router-dom";
-import {Alert, Spinner} from "react-bootstrap";
+import {Alert, Col, Row, Spinner} from "react-bootstrap";
 import RelatedMoviesSlide from "../Homepage/component/RelatedMoviesSlide/RelatedMoviesSlide";
 import {useMovieReviewsQuery} from "../../hooks/useMovieReview";
 import YouTubeModal from "../Homepage/component/Modal/YouTubeModal";
 import {useMovieVideosQuery} from "../../hooks/useMovieVideos";
+import ContentBox from "../../common/ContentBox/ContentBox";
 
 const MovieDetailPage = () => {
     const {id} = useParams();
@@ -22,6 +24,7 @@ const MovieDetailPage = () => {
         isError: videosIsError,
         error: videosError
     } = useMovieVideosQuery({id});
+
     if (isLoading) {
         return (
             <div className={'spinner-area'}>
@@ -69,34 +72,58 @@ const MovieDetailPage = () => {
     const title = data?.title;
     const video = videos.results[0].key;
 
+
     return (
         <div className={'container'}>
-
-            <div className={'movie-detail m-5'}>
-                <div className={'img-section'}>
-                    <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${data?.poster_path}`}
-                         alt={'영화 포스터'}/>
-                </div>
-                <YouTubeModal title={title} video={video}/>
-                <div className={'info-section'}>
-                    {data?.genres.map((item, key) => {
-                        return <div className={'genres'}>{item.name}</div>
-                    })}
-                    <h1>{data?.title}</h1>
-                    <h4>{data?.tagline}</h4>
-                    <p>평점: {Math.floor(data?.vote_average * 10) / 10} 인지도: {data?.popularity} {data?.adult ? '성인' : '19세 미만 상영가능'}</p>
-                    <hr/>
-                    <p>{data?.overview}</p>
-                    <hr/>
-                    <div>
-                        <div>Budget ${data?.budget.toLocaleString()}</div>
-                        <div>Revenue ${data?.revenue.toLocaleString()}</div>
-                        <div>Release Date {data?.release_date}</div>
-                        <div>Run Time {data?.runtime}분</div>
+            <Row>
+                <Col className={'w-80'}>
+                    <div className={'img-section m-5'}>
+                        <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${data?.poster_path}`}
+                             alt={'영화 포스터'}
+                             width={480}/>
                     </div>
-                </div>
+                </Col>
+                <Col className={'m-5 w-20'}>
+                    <div className={'info-section'}>
+                        <div className={'d-flex justify-content-around m-5 align-items-center'}>
+                            {data?.genres.map((item, key) => {
+                                return <div className={'genres'}>{item.name}</div>
+                            })}
+                        </div>
 
-            </div>
+                        <h1>{data?.title}</h1>
+                        <h4>{data?.tagline}</h4>
+                        <p className={'m-3'}>
+                            <span style={{
+                                fontWeight: "bold",
+                                fontSize: "23px"
+                            }}>평점:</span> {Math.floor(data?.vote_average * 10) / 10}
+                            &nbsp;&nbsp;&nbsp;
+                            <span style={{
+                                fontWeight: "bold",
+                                fontSize: "23px"
+                            }}>인지도:</span> {data?.popularity}
+                            &nbsp;&nbsp;&nbsp;
+                            <span style={{
+                                fontWeight: "bold",
+                                fontSize: "23px"
+                            }}>상영등급:</span> {data?.adult ? '성인' : '청소년 가능'}
+                        </p>
+                        <hr/>
+                        <p>{data?.overview}</p>
+                        <hr/>
+                        <div>
+                            <div>Budget ${data?.budget.toLocaleString()}</div>
+                            <div>Revenue ${data?.revenue.toLocaleString()}</div>
+                            <div>Release Date {data?.release_date}</div>
+                            <div>Run Time {data?.runtime}분</div>
+                        </div>
+                        <div className={'mt-5'}>
+                            <YouTubeModal title={title} video={video}/>
+                        </div>
+                    </div>
+                </Col>
+            </Row>
 
             <div className={'related-movies m-5'}>
                 <RelatedMoviesSlide id={id}/>
@@ -107,9 +134,7 @@ const MovieDetailPage = () => {
                 {reviewList.map((item, index) => {
                     return <div className={'review-content mt-5'} key={index}>
                         <h5>{item.author}</h5>
-                        <div>
-                            {item.content}
-                        </div>
+                        <ContentBox content={item.content}/>
                     </div>
                 })}
             </div>

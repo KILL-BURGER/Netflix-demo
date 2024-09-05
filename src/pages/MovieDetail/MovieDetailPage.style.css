@@ -1,0 +1,37 @@
+.genres {
+    padding: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.review-content {
+    border: 5px solid red;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.fold {
+    max-height: 50px;
+}
+
+.text-box {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.expand {
+    max-height: none;
+}
+
+.more-btn {
+    color: rgb(211, 211, 211);
+    font-weight: 700;
+    background: none;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    text-decoration: underline;
+}
