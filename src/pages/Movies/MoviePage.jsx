@@ -26,7 +26,6 @@ const MoviePage = () => {
     const [selectedGenre, setSelectedGenre] = useState('장르별 검색');
 
     let currentPage = data?.page;
-    console.log('currentPage', currentPage);
 
     let movieList = data?.results;
     const [filterList, setFilterList] = useState([]);
@@ -35,26 +34,21 @@ const MoviePage = () => {
     }
 
     const handlePageClick = (event) => {
-        console.log('event', event);
         setPage(event.selected + 1);
     }
 
     // 인기 많은순
     const popularListDesc = () => {
         if (movieList.length > 0 && movieList[0] !== '😭 검색한 결과가 없습니다..!') {
-            console.log(movieList.sort((a, b) => b.popularity - a.popularity));
+            movieList.sort((a, b) => b.popularity - a.popularity);
         }
     }
     // 인기 적은순
     const popularListAsc = () => {
         if (movieList.length > 0 && movieList[0] !== '😭 검색한 결과가 없습니다..!') {
-            console.log(movieList.sort((a, b) => a.popularity - b.popularity));
+            movieList.sort((a, b) => a.popularity - b.popularity);
         }
     }
-
-    console.log('data', data);
-    // console.log('genre', genreData);
-    // console.log('movieList', movieList);
 
     if (isLoading) {
         return (
