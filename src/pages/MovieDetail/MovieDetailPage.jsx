@@ -85,7 +85,7 @@ const MovieDetailPage = () => {
                 </Col>
                 <Col className={'m-5 w-20'}>
                     <div className={'info-section'}>
-                        <div className={'d-flex justify-content-around m-5 align-items-center'}>
+                        <div className={'d-flex justify-content-between m-5 align-items-center'}>
                             {data?.genres.map((item, key) => {
                                 return <div className={'genres'}>{item.name}</div>
                             })}
@@ -93,30 +93,21 @@ const MovieDetailPage = () => {
 
                         <h1>{data?.title}</h1>
                         <h4>{data?.tagline}</h4>
-                        <p className={'m-3'}>
-                            <span style={{
-                                fontWeight: "bold",
-                                fontSize: "23px"
-                            }}>평점:</span> {Math.floor(data?.vote_average * 10) / 10}
+                        <p>
+                            <span className={'span-style'}>평점:</span> {Math.floor(data?.vote_average * 10) / 10}
                             &nbsp;&nbsp;&nbsp;
-                            <span style={{
-                                fontWeight: "bold",
-                                fontSize: "23px"
-                            }}>인지도:</span> {data?.popularity}
+                            <span className={'span-style'}>인지도:</span> {data?.popularity}
                             &nbsp;&nbsp;&nbsp;
-                            <span style={{
-                                fontWeight: "bold",
-                                fontSize: "23px"
-                            }}>상영등급:</span> {data?.adult ? '성인' : '청소년 가능'}
+                            <span className={'span-style'}>상영등급:</span> {data?.adult ? '성인' : '청소년 가능'}
                         </p>
                         <hr/>
                         <p>{data?.overview}</p>
                         <hr/>
                         <div>
-                            <div>Budget ${data?.budget.toLocaleString()}</div>
-                            <div>Revenue ${data?.revenue.toLocaleString()}</div>
-                            <div>Release Date {data?.release_date}</div>
-                            <div>Run Time {data?.runtime}분</div>
+                            <div><span className={'span-style'}>제작비용:</span> ${data?.budget.toLocaleString()}</div>
+                            <div><span className={'span-style'}>영화수익:</span> ${data?.revenue.toLocaleString()}</div>
+                            <div><span className={'span-style'}>개봉일:</span> {data?.release_date}</div>
+                            <div><span className={'span-style'}>상영시간:</span> {data?.runtime}분</div>
                         </div>
                         <div className={'mt-5'}>
                             <YouTubeModal title={title} video={video}/>
