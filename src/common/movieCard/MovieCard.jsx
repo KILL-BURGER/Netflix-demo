@@ -2,7 +2,7 @@ import React from "react";
 import {Badge} from "react-bootstrap";
 import './MovieCard.style.css';
 import {useMovieGenreQuery} from "../../hooks/useMovieGenre";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const MovieCard = ({movie}) => {
     const {data: genreData} = useMovieGenreQuery();
@@ -16,6 +16,7 @@ const MovieCard = ({movie}) => {
 
     /*
         어떤 이유인지는 모르겠지만 디테일 페이지에서 -> 디테일 페이지로 넘어가질 못한다.
+        Link 태그도 안된다.
         그래서 대체로 <a> 태그 사용 버그 고치는 법을 알게되면 useNavigate() 로 고치자.
     * */
     const navigate = useNavigate();
