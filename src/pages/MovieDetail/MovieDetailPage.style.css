@@ -8,12 +8,12 @@
 
 .review-content {
     border: 5px solid red;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
 }
 
 .fold {
-    max-height: 50px;
+    max-height: 100px;
 }
 
 .text-box {
@@ -39,4 +39,30 @@
 .span-style {
     font-weight: bold;
     font-size: 23px;
+}
+
+.img-large {
+    width: 100%; /* 이미지를 섹션 너비의 100%로 설정 */
+    max-width: 400px; /* 최대 너비를 400px로 설정하여 너무 커지지 않도록 함 */
+    height: auto; /* 이미지 비율 유지 */
+}
+
+.info {
+    display: flex;
+}
+
+.info > div {
+    margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+    .info {
+        display: block;
+    }
+    .img-large {
+        max-width: 300px; /* 작은 화면에서는 조금 더 작은 크기로 설정 */
+    }
+    .review-content {
+        width: 100%;
+    }
 }

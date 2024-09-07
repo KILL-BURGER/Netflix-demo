@@ -76,30 +76,35 @@ const MovieDetailPage = () => {
     return (
         <div className={'container'}>
             <Row>
-                <Col className={'w-80'}>
-                    <div className={'img-section m-5'}>
+                <Col className={'col-12 text-center'}>
+                    <div className={'img-section m-auto'}>
                         <img src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${data?.poster_path}`}
                              alt={'영화 포스터'}
-                             width={480}/>
+                             className={'img-large'}/>
                     </div>
                 </Col>
-                <Col className={'m-5 w-20'}>
+                <Col className={'w-20 col-12'}>
                     <div className={'info-section'}>
-                        <div className={'d-flex justify-content-between m-5 align-items-center'}>
+                        <div className={'d-flex'}>
                             {data?.genres.map((item, key) => {
-                                return <div className={'genres'}>{item.name}</div>
+                                return <div className={'genres mt-5'}>{item.name}</div>
                             })}
                         </div>
-
-                        <h1>{data?.title}</h1>
-                        <h4>{data?.tagline}</h4>
-                        <p>
-                            <span className={'span-style'}>평점:</span> {Math.floor(data?.vote_average * 10) / 10}
-                            &nbsp;&nbsp;&nbsp;
-                            <span className={'span-style'}>인지도:</span> {data?.popularity}
-                            &nbsp;&nbsp;&nbsp;
-                            <span className={'span-style'}>상영등급:</span> {data?.adult ? '성인' : '청소년 가능'}
-                        </p>
+                        <div className={'mt-3'}>
+                            <h1>{data?.title}</h1>
+                            <h4>{data?.tagline}</h4>
+                            <div className={'info'}>
+                                <div>
+                                    <span className={'span-style'}>평점:</span> {Math.floor(data?.vote_average * 10) / 10}
+                                </div>
+                                <div>
+                                    <span className={'span-style'}>인지도:</span> {Math.floor(data?.popularity)}
+                                </div>
+                                <div>
+                                    <span className={'span-style'}>상영등급:</span> {data?.adult ? '성인' : '청소년 가능'}
+                                </div>
+                            </div>
+                        </div>
                         <hr/>
                         <p>{data?.overview}</p>
                         <hr/>
@@ -109,21 +114,23 @@ const MovieDetailPage = () => {
                             <div><span className={'span-style'}>개봉일:</span> {data?.release_date}</div>
                             <div><span className={'span-style'}>상영시간:</span> {data?.runtime}분</div>
                         </div>
-                        <div className={'mt-5'}>
+                        <div className={'mt-4 mb-4'}>
                             <YouTubeModal title={title} video={video}/>
                         </div>
                     </div>
                 </Col>
             </Row>
 
-            <div className={'related-movies m-5'}>
+            <hr/>
+            <div className={'related-movies'}>
                 <RelatedMoviesSlide id={id}/>
             </div>
 
-            <div className={'review-section m-5'}>
+            <hr/>
+            <div className={'review-section'}>
                 <h3>Reviews</h3>
                 {reviewList.map((item, index) => {
-                    return <div className={'review-content mt-5'} key={index}>
+                    return <div className={'review-content mt-3'} key={index}>
                         <h5>{item.author}</h5>
                         <ContentBox content={item.content}/>
                     </div>
