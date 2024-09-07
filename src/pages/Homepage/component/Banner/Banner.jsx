@@ -37,7 +37,9 @@ const Banner = () => {
         <div className={'text-white banner-text-area px-5'}>
             <h1 className={'banner-text-title'}>{data?.results[0].title}</h1>
             <p className={'banner-text-overview'}>{data?.results[0].overview}</p>
-            <YouTubeModal video={video}/>
+            <div className={'video-area'}>
+                <YouTubeModal video={video}/>
+            </div>
         </div>
     </div>;
 };

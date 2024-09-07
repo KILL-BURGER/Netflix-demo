@@ -14,7 +14,7 @@ const AppLayout = () => {
     };
     return (<div>
         <Navbar expand="lg" data-bs-theme={'dark'}
-                className="px-5 bg-black navbar navbar-expand-lg navbar-light">
+                className="px-1 bg-black navbar navbar-expand-lg navbar-light">
             <Container fluid>
                 <Navbar.Brand href="#">
                     <a href={'/'}>

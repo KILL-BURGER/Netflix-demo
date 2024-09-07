@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import YouTube from "react-youtube";
 
 const YouTubeModal = (props) => {
@@ -50,11 +50,9 @@ const YouTubeModal = (props) => {
                 <Modal.Header closeButton>
                     <Modal.Title>{props.title} 예고편</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
-                    <YouTube
-                        videoId={props.video}
-                        opts={opts}
-                    />
+                <Modal.Body style={{padding: 0}}>
+                    <YouTube videoId={props.video}
+                             opts={opts}/>
                 </Modal.Body>
             </Modal>
         </>
