@@ -13,8 +13,8 @@ const TopRatedMovieSlide = () => {
         return <Alert variant={'danger'}>{error.message}</Alert>
     }
 
-    return (<div>
-        <MovieSlider title='Popular Movies' movies={data.results} responsive={responsive}/>
+    return (<div className={'m-5'}>
+        <MovieSlider title='TopRated Movies' movies={data.results} responsive={responsive}/>
     </div>);
 }
 
